@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>images/Abi.bmp</file>
+        <file>images/Finaal.ico</file>
+        <file>images/copy.png</file>
+        <file>images/cut.png</file>
+        <file>images/eksport.png</file>
+        <file>images/exit.png</file>
+        <file>images/import.png</file>
+        <file>images/new.png</file>
+        <file>images/open.png</file>
+        <file>images/paste.png</file>
+        <file>images/print.png</file>
+        <file>images/salvesta_kui.png</file>
+        <file>images/save.png</file>
+        <file>images/tulemuse_aken.png</file>
+    </qresource>
+</RCC>
