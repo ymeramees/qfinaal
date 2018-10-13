@@ -5,142 +5,143 @@ TARGET = Finaal
 TEMPLATE = app
 #DEPENDPATH += .\qextserialport
 #INCLUDEPATH += .\qextserialport
-INCLUDEPATH += ./src/xlslib \
-	src/
+INCLUDEPATH += ./ \
+    src/xlslib \
+    src/
 include(src/qextserialport/src/qextserialport.pri)
 DEPENDPATH += $${INCLUDEPATH} #force rebuild if headers change
-SOURCES += main.cpp \
-    qfinaalmain.cpp \
-    qfinaal.cpp \
-    tulemuseaken.cpp \
-    valikkast.cpp \
-    seaded.cpp \
-    lehelugeja.cpp \
-    uhendumiseaken.cpp \
-    xlslib/workbook.cpp \
-    xlslib/unit.cpp \
-    xlslib/summinfo.cpp \
-    xlslib/sheetrec.cpp \
-    xlslib/row.cpp \
-    xlslib/record.cpp \
-    xlslib/recdef.cpp \
-    xlslib/range.cpp \
-    xlslib/number.cpp \
-    xlslib/note.cpp \
-    xlslib/merged.cpp \
-    xlslib/label.cpp \
-    xlslib/index.cpp \
-    xlslib/HPSF.cpp \
-    xlslib/globalrec.cpp \
-    xlslib/formula_expr.cpp \
-    xlslib/formula_estimate.cpp \
-    xlslib/formula_cell.cpp \
-    xlslib/formula.cpp \
-    xlslib/format.cpp \
-    xlslib/font.cpp \
-    xlslib/extformat.cpp \
-    xlslib/err.cpp \
-    xlslib/docsumminfo.cpp \
-    xlslib/datast.cpp \
-    xlslib/continue.cpp \
-    xlslib/colors.cpp \
-    xlslib/colinfo.cpp \
-    xlslib/cell.cpp \
-    xlslib/cbridge.cpp \
-    xlslib/boolean.cpp \
-    xlslib/blank.cpp \
-    xlslib/assert_assist.cpp \
-    common/overnew.cpp \
-    oledoc/oleprop.cpp \
-    oledoc/olefs.cpp \
-    oledoc/oledoc.cpp \
-    oledoc/binfile.cpp \
-    localcharset.c \
-    radadeaken.cpp \
-    rajaspinbox.cpp \
-    markleht.cpp \
-    ../Protokollitaja/lask.cpp \
-    lugemismasin.cpp
-HEADERS += qfinaalmain.h \
-    qfinaal.h \
-    tulemuseaken.h \
-    valikkast.h \
-    seaded.h \
-    lehelugeja.h \
-    uhendumiseaken.h \
-    xlslib/workbook.h \
-    xlslib/unit.h \
-    xlslib/tostr.h \
-    xlslib/summinfo.h \
-    xlslib/sheetrec.h \
-    xlslib/row.h \
-    xlslib/rectypes.h \
-    xlslib/record.h \
-    xlslib/recdef.h \
-    xlslib/range.h \
-    xlslib/number.h \
-    xlslib/note.h \
-    xlslib/merged.h \
-    xlslib/label.h \
-    xlslib/index.h \
-    xlslib/HPSF.h \
-    xlslib/globalrec.h \
-    xlslib/formula_expr.h \
-    xlslib/formula_estimate.h \
-    xlslib/formula_const.h \
-    xlslib/formula_cell.h \
-    xlslib/formula.h \
-    xlslib/formtags.h \
-    xlslib/format.h \
-    xlslib/font.h \
-    xlslib/extformat.h \
-    xlslib/err.h \
-    xlslib/docsumminfo.h \
-    xlslib/datast.h \
-    xlslib/continue.h \
-    xlslib/common.h \
-    xlslib/colors.h \
-    xlslib/colinfo.h \
-    xlslib/cell.h \
-    xlslib/cbridge.h \
-    xlslib/boolean.h \
-    xlslib/blank.h \
-    xlslib/biffsection.h \
-    xlslib.h \
-    xlconfig.h \
-    common/xlsys.h \
-    common/xlstypes.h \
-    common/xls_pshpack4.h \
-    common/xls_pshpack2.h \
-    common/xls_pshpack1.h \
-    common/xls_poppack.h \
-    common/timespan.h \
-    common/systype.h \
-    common/stringtok.h \
-    common/overnew.h \
-    oledoc/oleprop.h \
-    oledoc/olefs.h \
-    oledoc/oledoc.h \
-    oledoc/binfile.h \
-    localcharset.h \
-    version.h \
-    radadeaken.h \
-    rajaspinbox.h \
-    markleht.h \
-    ../Protokollitaja/lask.h \
-    lugemismasin.h
+SOURCES += src/main.cpp \
+    src/qfinaalmain.cpp \
+    src/qfinaal.cpp \
+    src/tulemuseaken.cpp \
+    src/valikkast.cpp \
+    src/seaded.cpp \
+    src/lehelugeja.cpp \
+    src/uhendumiseaken.cpp \
+    src/xlslib/xlslib/workbook.cpp \
+    src/xlslib/xlslib/unit.cpp \
+    src/xlslib/xlslib/summinfo.cpp \
+    src/xlslib/xlslib/sheetrec.cpp \
+    src/xlslib/xlslib/row.cpp \
+    src/xlslib/xlslib/record.cpp \
+    src/xlslib/xlslib/recdef.cpp \
+    src/xlslib/xlslib/range.cpp \
+    src/xlslib/xlslib/number.cpp \
+    src/xlslib/xlslib/note.cpp \
+    src/xlslib/xlslib/merged.cpp \
+    src/xlslib/xlslib/label.cpp \
+    src/xlslib/xlslib/index.cpp \
+    src/xlslib/xlslib/HPSF.cpp \
+    src/xlslib/xlslib/globalrec.cpp \
+    src/xlslib/xlslib/formula_expr.cpp \
+    src/xlslib/xlslib/formula_estimate.cpp \
+    src/xlslib/xlslib/formula_cell.cpp \
+    src/xlslib/xlslib/formula.cpp \
+    src/xlslib/xlslib/format.cpp \
+    src/xlslib/xlslib/font.cpp \
+    src/xlslib/xlslib/extformat.cpp \
+    src/xlslib/xlslib/err.cpp \
+    src/xlslib/xlslib/docsumminfo.cpp \
+    src/xlslib/xlslib/datast.cpp \
+    src/xlslib/xlslib/continue.cpp \
+    src/xlslib/xlslib/colors.cpp \
+    src/xlslib/xlslib/colinfo.cpp \
+    src/xlslib/xlslib/cell.cpp \
+    src/xlslib/xlslib/cbridge.cpp \
+    src/xlslib/xlslib/boolean.cpp \
+    src/xlslib/xlslib/blank.cpp \
+    src/xlslib/xlslib/assert_assist.cpp \
+    src/xlslib/common/overnew.cpp \
+    src/xlslib/oledoc/oleprop.cpp \
+    src/xlslib/oledoc/olefs.cpp \
+    src/xlslib/oledoc/oledoc.cpp \
+    src/xlslib/oledoc/binfile.cpp \
+    src/localcharset.c \
+    src/radadeaken.cpp \
+    src/rajaspinbox.cpp \
+    src/markleht.cpp \
+    ../protokollitaja/src/lask.cpp \
+    src/lugemismasin.cpp
+HEADERS += src/qfinaalmain.h \
+    src/qfinaal.h \
+    src/tulemuseaken.h \
+    src/valikkast.h \
+    src/seaded.h \
+    src/lehelugeja.h \
+    src/uhendumiseaken.h \
+    src/xlslib/xlslib/workbook.h \
+    src/xlslib/xlslib/unit.h \
+    src/xlslib/xlslib/tostr.h \
+    src/xlslib/xlslib/summinfo.h \
+    src/xlslib/xlslib/sheetrec.h \
+    src/xlslib/xlslib/row.h \
+    src/xlslib/xlslib/rectypes.h \
+    src/xlslib/xlslib/record.h \
+    src/xlslib/xlslib/recdef.h \
+    src/xlslib/xlslib/range.h \
+    src/xlslib/xlslib/number.h \
+    src/xlslib/xlslib/note.h \
+    src/xlslib/xlslib/merged.h \
+    src/xlslib/xlslib/label.h \
+    src/xlslib/xlslib/index.h \
+    src/xlslib/xlslib/HPSF.h \
+    src/xlslib/xlslib/globalrec.h \
+    src/xlslib/xlslib/formula_expr.h \
+    src/xlslib/xlslib/formula_estimate.h \
+    src/xlslib/xlslib/formula_const.h \
+    src/xlslib/xlslib/formula_cell.h \
+    src/xlslib/xlslib/formula.h \
+    src/xlslib/xlslib/formtags.h \
+    src/xlslib/xlslib/format.h \
+    src/xlslib/xlslib/font.h \
+    src/xlslib/xlslib/extformat.h \
+    src/xlslib/xlslib/err.h \
+    src/xlslib/xlslib/docsumminfo.h \
+    src/xlslib/xlslib/datast.h \
+    src/xlslib/xlslib/continue.h \
+    src/xlslib/xlslib/common.h \
+    src/xlslib/xlslib/colors.h \
+    src/xlslib/xlslib/colinfo.h \
+    src/xlslib/xlslib/cell.h \
+    src/xlslib/xlslib/cbridge.h \
+    src/xlslib/xlslib/boolean.h \
+    src/xlslib/xlslib/blank.h \
+    src/xlslib/xlslib/biffsection.h \
+    src/xlslib/xlslib.h \
+    src/xlslib/xlconfig.h \
+    src/xlslib/common/xlsys.h \
+    src/xlslib/common/xlstypes.h \
+    src/xlslib/common/xls_pshpack4.h \
+    src/xlslib/common/xls_pshpack2.h \
+    src/xlslib/common/xls_pshpack1.h \
+    src/xlslib/common/xls_poppack.h \
+    src/xlslib/common/timespan.h \
+    src/xlslib/common/systype.h \
+    src/xlslib/common/stringtok.h \
+    src/xlslib/common/overnew.h \
+    src/xlslib/oledoc/oleprop.h \
+    src/xlslib/oledoc/olefs.h \
+    src/xlslib/oledoc/oledoc.h \
+    src/xlslib/oledoc/binfile.h \
+    src/localcharset.h \
+    src/radadeaken.h \
+    src/rajaspinbox.h \
+    src/markleht.h \
+    ../protokollitaja/src/lask.h \
+    src/lugemismasin.h \
+    src/version.h
 QT += network \
     printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 RESOURCES += finaal.qrc
-RC_FILE = ikoon.rc
-FORMS += Seaded.ui \
-    ValikKast.ui \
-    lehelugeja.ui \
-    uhendumiseaken.ui \
-    radadeaken.ui
+RC_FILE = src/ikoon.rc
+FORMS += src/Seaded.ui \
+    src/ValikKast.ui \
+    src/lehelugeja.ui \
+    src/uhendumiseaken.ui \
+    src/radadeaken.ui
 #LIBS += -L.\qextserialport\build -lqextserialport
 win32{
     isEqual(QT_MAJOR_VERSION, 4): LIBS += -liconv

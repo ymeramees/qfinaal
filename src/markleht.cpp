@@ -97,7 +97,7 @@ void Markleht::joonistaLask(Lask &l)
 void Markleht::joonistaLeht()
 {
     //Mõõtkava: 1px = kordaja * mm
-    if(relv == 0 || relv == 2){   //Õhupüss ja sportpüss
+    if(relv == 0){   //Õhupüss
         kordaja = 8;
         kaliiber = 4.5;
         kaugeimX = kaugeimY = markleheRaadius = 364;
@@ -113,7 +113,7 @@ void Markleht::joonistaLeht()
         pliiats.setWidth(4);
         painter->setBrush(Qt::white);
         painter->setPen(pliiats);
-        //painter->rotate(180);
+
         painter->drawEllipse(QPoint(0, 0), 364, 364);
         painter->drawEllipse(QPoint(0, 0), 324, 324);
         painter->drawEllipse(QPoint(0, 0), 284, 284);
@@ -140,16 +140,7 @@ void Markleht::joonistaLeht()
         painter->drawText(-184-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "5");
         painter->drawText(224-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "4");
         painter->drawText(-224-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "4");
-//        painter->drawText(-36, 5, "8");
-//        painter->drawText(28, 5, "8");
-//        painter->drawText(-56, 5, "7");
-//        painter->drawText(48, 5, "7");
-//        painter->drawText(-76, 5, "6");
-//        painter->drawText(70, 5, "6");
-//        painter->drawText(-97, 5, "5");
-//        painter->drawText(88, 5, "5");
-//        painter->drawText(-116, 5, "4");
-//        painter->drawText(110, 5, "4");
+
         if(aktiivne)
             painter->setPen(Qt::black);
         else
@@ -160,16 +151,82 @@ void Markleht::joonistaLeht()
         painter->drawText(-304-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "2");
         painter->drawText(344-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "1");
         painter->drawText(-344-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "1");
-//        painter->drawText(-136, 5, "3");
-//        painter->drawText(129, 5, "3");
-//        painter->drawText(-156, 5, "2");
-//        painter->drawText(150, 5, "2");
-//        painter->drawText(-176, 5, "1");
-//        painter->drawText(169, 5, "1");
-        //painter->setBrush(Qt::red);
-        //painter->setPen(Qt::NoPen);
-        //painter->drawEllipse(QPoint(190, 162), 10, 10);
-        //painter->drawEllipse(QPoint(211, 247), 10, 10);
+
+    }else if(relv == 2){   //50m rifle target
+        float fBlackRings[] = {122.4, 138.4, 154.4}; //black rings on white background, in mm's
+        int blackRings[(sizeof(fBlackRings)/sizeof(*fBlackRings))];
+
+        float fWhiteRings[] = {10.4, 26.4, 42.4, 58.4, 74.4, 90.4, 106.4}; //white rings on black background, in mm's
+        int whiteRings[(sizeof(fWhiteRings)/sizeof(*fWhiteRings))];
+
+        kordaja = 4;
+
+        int blackArea = qRound(112.4 * kordaja);
+        int innerTen = 5 * kordaja;
+        for(int i = 0; i < (sizeof(fBlackRings)/sizeof(*fBlackRings)); i++){
+            blackRings[i] = qRound(fBlackRings[i] * kordaja);
+        }
+        for(int i = 0; i < (sizeof(fWhiteRings)/sizeof(*fWhiteRings)); i++){
+            whiteRings[i] = qRound(fWhiteRings[i] * kordaja);
+        }
+
+        kaliiber = 5.6;
+        kaugeimX = kaugeimY = markleheRaadius = blackRings[(sizeof(blackRings)/sizeof(*blackRings))-1];
+
+        QFont font;
+        font.setPointSize(30);
+        painter->setFont(font);
+        pilt->fill(Qt::white);
+        QPen pliiats;
+        if(aktiivne)
+            pliiats.setColor(Qt::black);
+        else
+            pliiats.setColor(Qt::gray);
+        pliiats.setWidth(4);
+        painter->setBrush(Qt::white);
+        painter->setPen(pliiats);
+
+        painter->drawEllipse(QPoint(0, 0), blackRings[2], blackRings[2]);   //1
+        painter->drawEllipse(QPoint(0, 0), blackRings[1], blackRings[1]);
+        painter->drawEllipse(QPoint(0, 0), blackRings[0], blackRings[0]);
+        if(aktiivne)
+            painter->setBrush(Qt::black);
+        else
+            painter->setBrush(Qt::gray);
+        painter->drawEllipse(QPoint(0, 0), blackArea, blackArea);
+        pliiats.setColor(Qt::white);
+        painter->setPen(pliiats);
+        painter->drawEllipse(QPoint(0, 0), whiteRings[6], whiteRings[6]);
+        painter->drawEllipse(QPoint(0, 0), whiteRings[5], whiteRings[5]);   //5
+        painter->drawEllipse(QPoint(0, 0), whiteRings[4], whiteRings[4]);
+        painter->drawEllipse(QPoint(0, 0), whiteRings[3], whiteRings[3]);
+        painter->drawEllipse(QPoint(0, 0), whiteRings[2], whiteRings[2]);
+        painter->drawEllipse(QPoint(0, 0), whiteRings[1], whiteRings[1]);
+        painter->drawEllipse(QPoint(0, 0), whiteRings[0], whiteRings[0]); //10
+        painter->drawEllipse(QPoint(0, 0), innerTen, innerTen);
+
+        painter->drawText((whiteRings[1]+whiteRings[2])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "8");
+        painter->drawText((whiteRings[1]+whiteRings[2])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "8");
+        painter->drawText((whiteRings[2]+whiteRings[3])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "7");
+        painter->drawText((whiteRings[2]+whiteRings[3])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "7");
+        painter->drawText((whiteRings[3]+whiteRings[4])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "6");
+        painter->drawText((whiteRings[3]+whiteRings[4])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "6");
+        painter->drawText((whiteRings[4]+whiteRings[5])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "5");
+        painter->drawText((whiteRings[4]+whiteRings[5])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "5");
+        painter->drawText((whiteRings[5]+whiteRings[6])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "4");
+        painter->drawText((whiteRings[5]+whiteRings[6])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "4");
+
+        if(aktiivne)
+            painter->setPen(Qt::black);
+        else
+            painter->setPen(Qt::gray);
+        painter->drawText((blackArea+blackRings[0])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "3");
+        painter->drawText((blackArea+blackRings[0])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "3");
+        painter->drawText((blackRings[0]+blackRings[1])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "2");
+        painter->drawText((blackRings[0]+blackRings[1])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "2");
+        painter->drawText((blackRings[1]+blackRings[2])/2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "1");
+        painter->drawText((blackRings[1]+blackRings[2])/-2-20, -20, 40, 40, Qt::AlignCenter | Qt::AlignVCenter, "1");
+
     }else{  //Õhupüstol
         kordaja = 4;
         kaliiber = 4.5;

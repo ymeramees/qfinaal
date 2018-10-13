@@ -25,7 +25,7 @@
 	//#include <qextserialbase.h>
 	//#include <qextserialport.h>
 #include "xlslib.h"
-#include "../Protokollitaja/lask.h"
+#include "../protokollitaja/src/lask.h"
 #include "markleht.h"
 	
 	

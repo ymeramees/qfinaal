@@ -7,7 +7,7 @@
 #include <QDebug>
 #endif
 
-#include "../Protokollitaja/lask.h"
+#include "../protokollitaja/src/lask.h"
 
 class Markleht : public QLabel
 {
