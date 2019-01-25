@@ -2644,7 +2644,7 @@ void QFinaalMain::xls()
 		
         for(int j = 0; j < 5; j++){
             if(tabel->lask[j + 5][jarjekord.at(7 - i)]->text() != "00")
-                        sheet->label(i * 7 + 7 + j, 4, tabel->lask[j + 3][jarjekord.at(7 - i)]->text().toStdString())->font(tekstiFont);
+                        sheet->label(i * 7 + 7 + j, 4, tabel->lask[j + 5][jarjekord.at(7 - i)]->text().toStdString())->font(tekstiFont);
                         sheet->FindCell(i * 7 + 7 + j, 4)->halign(xlslib_core::HALIGN_CENTER);
 		}
 		
