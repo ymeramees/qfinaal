@@ -411,6 +411,11 @@ void QFinaalMain::uuendaLasuNrit()
 
 void QFinaalMain::uuendaSeaded()
 {
+    lehtedePeitja->setInterval(seaded->ui.marklehtedeAegBox->value()*1000);
+
+    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 1)
+        lehtedePeitja->stop();
+
     for(int i = 0; i < 8; i++){
         tulemus->marklehed[i]->init(seaded->ui.relvaValik->currentIndex()); //Uuendab lehtede tüüpi
     }
@@ -816,6 +821,7 @@ void QFinaalMain::impordiSiusStartList()
                 }
             }
         }
+        initTulemuseaken(); // Kole moodus, et nimed märklehtedele tuleks
     }else
         QMessageBox::critical(this, "Viga", "Ei õnnestunud faili avada!", QMessageBox::Ok);
 }
@@ -835,8 +841,14 @@ void QFinaalMain::jarjesta()
         }else{
         *tulemus->las = (est->toString(mitmesLask) + ". lask");
     }
-    if(mitmesLask == 0)
-    *tulemus->las = "Tulemus";
+    if(mitmesLask == 0){
+        *tulemus->las = "Tulemus";
+        for(int i = 0; i < 8; i++){
+            *tulemus->koht[i] = *tulemus->rada[i];
+        }
+    }else for(int i = 0; i < 8; i++){
+        *tulemus->koht[i] = QString("%1.").arg(i+1);
+    }
     int larv = 0;
     for(int j = 0; j < 8; j++){
         for(int k = 0; k < 24; k++)
@@ -1544,9 +1556,10 @@ void QFinaalMain::import()
 void QFinaalMain::initTulemuseaken()
 {
 #ifdef PROOV
-            qDebug() << "initTulemuseaken()";
+    qDebug() << "initTulemuseaken()";
 #endif
-    tulemus = new TulemuseAken;
+    if(tulemus == 0)
+        tulemus = new TulemuseAken;
     tulemus->setWindowTitle(programmiNimi + " tulemused");
     tulemus->setWindowIcon(QIcon(":/images/Finaal.ico"));
 //    QMessageBox::information(this, programmiNimi, tr("Enne märklehtede initseerimist"), QMessageBox::Ok);
@@ -1636,6 +1649,7 @@ void QFinaalMain::naitaSeaded()
     //seaded->vanaDir = seaded->ui.lineEdit->text();
     seaded->vanaIndex = seaded->ui.comboBox->currentIndex();
     seaded->vanaLangemine = seaded->ui.valjalangemiseBox->isChecked();
+    seaded->vanaMarklehtedeVahetamine = seaded->ui.marklehtedeVahetamiseBox->currentIndex();
     seaded->vanaMarklehtedeAeg = seaded->ui.marklehtedeAegBox->value();
     seaded->ui.relvaValik->setCurrentIndex(tulemus->marklehed[0]->getRelv());
     connect(seaded, SIGNAL(accepted()), this, SLOT(uuendaSeaded()));
@@ -1821,7 +1835,8 @@ void QFinaalMain::loeLask(Lask l)
                     //                        summ(j);    //Peab kontrollima, ega see siin midagi ära ei riku
                     //                        tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                     tulemus->marklehed[i]->joonistaLask(l);
-                    lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
+                    if(seaded->ui.marklehtedeVahetamiseBox == 0)
+                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
                     //#endif
 
                     return;
@@ -1842,7 +1857,8 @@ void QFinaalMain::loeLask(Lask l)
                     //                        summ(j);    //Peab kontrollima, ega see siin midagi ära ei riku
                     //                        tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                     tulemus->marklehed[i]->joonistaLask(l);
-                    lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
+                    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0)
+                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
                     //#endif
 
                     return;
@@ -2108,7 +2124,8 @@ void QFinaalMain::loeSiusDatast()
 //                    tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                     tulemus->marklehed[j]->joonistaLask(lask);
                     lehtedePeitja->setInterval(seaded->ui.marklehtedeAegBox->value()*1000);
-                    lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
+                    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0)
+                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
 #ifdef PROOV
         qDebug() << "Read[3]: " << read[3] << ", rida: " << info;
         //qDebug() << "Eelminerida[0]: " << eelmineRida[0];

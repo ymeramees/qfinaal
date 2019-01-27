@@ -26,6 +26,8 @@ void Seaded::loobu()
 	//ui.lineEdit->setText(vanaDir);
 	ui.comboBox->setCurrentIndex(vanaIndex);
     ui.valjalangemiseBox->setChecked(vanaLangemine);
+    ui.marklehtedeVahetamiseBox->setCurrentIndex(vanaMarklehtedeVahetamine);
+    ui.marklehtedeAegBox->setValue(vanaMarklehtedeAeg);
     ui.relvaValik->setCurrentIndex(vanaRelv);
 	close();
 }

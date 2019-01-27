@@ -20,6 +20,7 @@
 		//QString vanaDir;
         bool vanaLangemine;
 		int vanaIndex;
+        int vanaMarklehtedeVahetamine;
         int vanaMarklehtedeAeg;
         int vanaRelv;
 		Seaded(QWidget *parent = 0);
