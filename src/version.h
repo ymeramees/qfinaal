@@ -1,12 +1,12 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-//Muudetud 25.01.2019 - peale mida oli reliis, seega vaja muuta
-#define VER_FILEVERSION             1,4,14,0
-#define VER_FILEVERSION_STR         "1.4.14\0"
+//Muudetud 10.02.2019 - peale mida oli reliis, seega vaja muuta
+#define VER_FILEVERSION             1,4,15,0
+#define VER_FILEVERSION_STR         "1.4.15\0"
 
-#define VER_PRODUCTVERSION          1,4,14,0
-#define VER_PRODUCTVERSION_STR      "1.4.14\0"
+#define VER_PRODUCTVERSION          1,4,15,0
+#define VER_PRODUCTVERSION_STR      "1.4.15\0"
 
 #define VER_COMPANYNAME_STR         "Ymeramees"
 #define VER_FILEDESCRIPTION_STR     "Finaal 1.4"
