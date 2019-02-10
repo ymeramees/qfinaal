@@ -38,8 +38,10 @@
 		QFont kiriKriipsutatud;
         QGridLayout *ruudustik;
         QVBoxLayout *vRuudustik;
-        QImage *pilt;
-        QPainter *painter;
+        QImage *resultsImage;
+        QImage *halfHeightResultsImage;
+        QPainter *resultsPainter;
+        QPainter *halfHeightResultsPainter;
         QLabel *silt;
         QString *pealKiri;
         QString *nim;

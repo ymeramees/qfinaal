@@ -1480,7 +1480,7 @@ void QFinaalMain::print()
 		int h = printer.pageRect().height();
 		QRect page(0, 0, w, h);
 		
-		painter.drawImage(page, *tulemus->pilt);
+        painter.drawImage(page, *tulemus->resultsImage);
 	}
 }
 
@@ -1829,14 +1829,15 @@ void QFinaalMain::loeLask(Lask l)
                     vajutaTab();
                     seadistaja->start();
                     //#ifdef PROOV
-                    if(tulemus->marklehed[i]->isHidden())   //Algul ei ole märklehti näha
-                        tulemus->naitaLehed();  //Puhastab ja toob märklehed nähtavale
-                    tulemus->peidaNimed();
+                    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0){
+                        if(tulemus->marklehed[i]->isHidden())   //Algul ei ole märklehti näha
+                            tulemus->naitaLehed();  //Puhastab ja toob märklehed nähtavale
+                        tulemus->peidaNimed();
+                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
+                    }
                     //                        summ(j);    //Peab kontrollima, ega see siin midagi ära ei riku
                     //                        tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                     tulemus->marklehed[i]->joonistaLask(l);
-                    if(seaded->ui.marklehtedeVahetamiseBox == 0)
-                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
                     //#endif
 
                     return;
@@ -1851,14 +1852,15 @@ void QFinaalMain::loeLask(Lask l)
                     vajutaTab();
                     seadistaja->start();
                     //#ifdef PROOV
-                    if(tulemus->marklehed[i]->isHidden())   //Algul ei ole märklehti näha
-                        tulemus->naitaLehed();  //Puhastab ja toob märklehed nähtavale
-                    tulemus->peidaNimed();
+                    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0){
+                        if(tulemus->marklehed[i]->isHidden())   //Algul ei ole märklehti näha
+                            tulemus->naitaLehed();  //Puhastab ja toob märklehed nähtavale
+                        tulemus->peidaNimed();
+                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
+                    }
                     //                        summ(j);    //Peab kontrollima, ega see siin midagi ära ei riku
                     //                        tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                     tulemus->marklehed[i]->joonistaLask(l);
-                    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0)
-                        lehtedePeitja->start(); //Lehed peale aja möödumist uuesti peitu, et nimed näha oleks
                     //#endif
 
                     return;
@@ -2183,9 +2185,11 @@ void QFinaalMain::loeSiusDatast()
                         f *= 1000; //Tundub, et Sius'i koordinaadid on meetrites, vaja teha millimeetrid
                         lask.setY(f);
 
-                        if(tulemus->marklehed[j]->isHidden())   //Algul ei ole märklehti näha
-                            tulemus->naitaLehed();  //Toob märklehed nähtavale
-                        tulemus->peidaNimed();
+                        if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0){
+                            if(tulemus->marklehed[j]->isHidden())   //Algul ei ole märklehti näha
+                                tulemus->naitaLehed();  //Toob märklehed nähtavale
+                            tulemus->peidaNimed();
+                        }
     //                        summ(j);    //Peab kontrollima, ega see siin midagi ära ei riku
     //                        tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                         tulemus->marklehed[j]->joonistaLask(lask);
@@ -2267,9 +2271,11 @@ void QFinaalMain::loeSiusDatast()
                         tulemus->puhastaLehed();
                     }
 
-                    if(tulemus->marklehed[j]->isHidden())   //Algul ei ole märklehti näha
-                        tulemus->naitaLehed();  //Toob märklehed nähtavale
-                    tulemus->peidaNimed();
+                    if(seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0){
+                        if(tulemus->marklehed[j]->isHidden())   //Algul ei ole märklehti näha
+                            tulemus->naitaLehed();  //Toob märklehed nähtavale
+                        tulemus->peidaNimed();
+                    }
 //                        summ(j);    //Peab kontrollima, ega see siin midagi ära ei riku
 //                        tulemus->marklehed[j]->setTulemus(tabel->seeria[j]->text());
                     tulemus->marklehed[j]->joonistaLask(lask);
