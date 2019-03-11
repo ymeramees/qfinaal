@@ -401,9 +401,9 @@ void QFinaalMain::uuendaLasuNrit()
         for(int i = 0; i < 8; i++)
             if(tabel->kohal[i]->isChecked() && tabel->lask[mitmesLask - 1][i]->text() == "00")
                 koikLasknud = false;
-    if((mitmesLask == 5 || mitmesLask == 10 || mitmesLask > 10) && koikLasknud){
+    if((mitmesLask == 5 || mitmesLask == 10 || mitmesLask > 10) && koikLasknud && seaded->ui.marklehtedeVahetamiseBox->currentIndex() == 0){
         lehtedePeitja->setInterval(seaded->ui.marklehtedeAegBox->value()*1000);
-        lehtedePeitja->start(); //Kui kõik on lasknud, siis lehed peale aja möödumist uuesti peitu, et nimed näha oleks
+        lehtedePeitja->start(); //Kui kõik on lasknud, siis lehed peale aja möödumist uuesti peitu, et nimed näha oleks, kui seadetes see sisse on lülitatud
     }else lehtedePeitja->stop(); //Et uue seeria esimese lasu järel lehti ära ei peidetaks
 
     tulemus->mitmesLask = mitmesLask;
