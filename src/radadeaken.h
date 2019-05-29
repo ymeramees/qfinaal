@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QLabel>
 #include <QLineEdit>
+#include <QRegExpValidator>
 #ifdef PROOV
 #include <QDebug>
 #endif
