@@ -2017,8 +2017,10 @@ void QFinaalMain::loeSiusDatast()
         QTextStream logiValja(logi);
 
 //        if(siusDatast.indexOf(13, 0) == -1) return;    //Ei ole terve rida kohale jõudnud
-        if(!info.contains((QChar)10)) return;  //Rea lõppu ei ole, järelikult ei ole terve rida kohale jõudnud
-
+        if(!info.contains((QChar)10)){
+            logiValja << "Rea lõppu ei ole! Rida: " << info << endl;
+            return;  //Rea lõppu ei ole, järelikult ei ole terve rida kohale jõudnud
+        }
 //        do{ //Kõigepealt on vaja leida failist koht, kust algab laskurite info
 //            rida = siusDatast.left(siusDatast.indexOf(13, 1));
 //            siusDatast.remove(0, siusDatast.indexOf(13, 1) + 2);
@@ -2031,9 +2033,6 @@ void QFinaalMain::loeSiusDatast()
         static int leitud = 0; //Laskurite arv, kellele on ID leitud ja lisatud
 
         if(info.startsWith("_NAME")){
-#ifdef PROOV
-        qDebug() << "Nimed";
-#endif
 //        for(int i = 0; i < 8; i++){ //Seejärel on vaja sisse lugeda laskurite ID'd
             QStringList read = info.split(';');
             for(int j = 0; j < 8; j++){
@@ -2141,7 +2140,7 @@ void QFinaalMain::loeSiusDatast()
             if(read[12] != "0"){   //Kui tegu on proovilasuga, on see 0, kui võistluslasuga, siis on seal seeria summa
                 for(int j = 0; j < 8; j++){ //Kuna eelmine rida oli juba esimene võistluslask, on vaja see kellelegi lisada
 //#ifdef PROOV
-//        qDebug() << "Rida: " << rida;
+//        qDebug() << "Rida: " << info;
 //        qDebug() << "Read[3]: " << read[3] << " tabel.id[" << j << "]: " << tabel->id[j];
 //        qDebug() << "Eelminerida[" << j << "]: " << eelmineRida[j];
 //#endif

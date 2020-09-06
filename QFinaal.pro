@@ -60,7 +60,7 @@ SOURCES += src/main.cpp \
     src/radadeaken.cpp \
     src/rajaspinbox.cpp \
     src/markleht.cpp \
-    ../protokollitaja/src/lask.cpp \
+    src/lask.cpp \
     src/lugemismasin.cpp
 HEADERS += src/qfinaalmain.h \
     src/qfinaal.h \
@@ -127,7 +127,7 @@ HEADERS += src/qfinaalmain.h \
     src/radadeaken.h \
     src/rajaspinbox.h \
     src/markleht.h \
-    ../protokollitaja/src/lask.h \
+    src/lask.h \
     src/lugemismasin.h \
     src/version.h
 QT += network \

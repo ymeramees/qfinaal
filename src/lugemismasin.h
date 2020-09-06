@@ -6,7 +6,7 @@
 #include <QTimer>
 #include <QDebug>
 
-#include "../protokollitaja/src/lask.h"
+#include "lask.h"
 #include "qextserialport.h"
 #include "qextserialenumerator.h"
 
